@@ -5,18 +5,17 @@ import time as t
 import tmdbsimple as tmdb
 tmdb.API_KEY = '3b688e8bee27473c3ed2c1caeeab204e'
 
-name = input("Please enter a movie name: ")
 
 
-def getIds(name):
+def getInfo(s):
+    l = []
+    for e in s.results:
+        l += [e['id'], e['title'], e['poster_path']]
+    return l
+
+def main():
+    name = input("Please enter a movie name: ")
+    results = []
     search = tmdb.Search()
     response = search.movie(query=name)
-    for s in search.results:
-        return s['id']
-
-
-def getTitle(name):
-    search = tmdb.Search()
-    response = search.movie(query=name)
-    for s in search.results:
-        return s['title']
+    return getInfo(search)
