@@ -1,0 +1,1 @@
+pyuic4 -x mycritic_search.ui -o mycritic_search.py
